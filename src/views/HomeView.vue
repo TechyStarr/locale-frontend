@@ -116,7 +116,7 @@ export default {
       }
     },
     search () {
-      axios.get('http://127.0.0.1:5000/query?keyword=' + this.searchQuery)
+      axios.get('https://locale-lkbw.onrender.com/query?keyword=' + this.searchQuery)
         .then(response => {
           if (Array.isArray(response.data) && response.data.length > 0) {
             // Search results found
