@@ -1,28 +1,50 @@
 <template>
-  <nav>
+  <nav class="header">
     <div class="logo">
-      <i class="fas fa-rocket"></i> <!-- Replace "fa-rocket" with the desired icon from Font Awesome -->
+      <i class="fa-sharp fa-solid fa-location-dot"></i> <span>Locale</span>
     </div>
-    <!-- <div class="logo"> -->
-        <!-- <img src="/assets/logo.png" alt="logo" width="50px" height="50px">
-        <span>Locale</span> -->
-    <!-- </div>  -->
-    <router-link to="/">
-        <span class="nav-tab">Home</span>
+    <div class="nav-tabs">
+      <router-link to="/">
+        <span>Home</span>
       </router-link>
-    <router-link to="/developer">
-        <span class="nav-tab">Developer</span>
-    </router-link>
-    <router-link to="/fun">
-        <span class="nav-tab">Fun</span>
-    </router-link>
+      <router-link to="/">
+        <span>About</span>
+      </router-link>
+      <router-link to="/developer">
+          <span>Developer</span>
+      </router-link>
+      <!-- <router-link to="/fun">
+        <span>Fun</span>
+    </router-link> -->
+    <router-link to="/">
+        <span>Contact</span>
+      </router-link>
+    </div>
+
     <div>
       <router-link v-if="!isLoggedIn" to="/login">
-        <span class="nav2">Sign In</span>
+        <span class="login-button">Sign In</span>
       </router-link>
     </div>
   </nav>
   <router-view/>
+
+  <div class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Logo" />
+    </div>
+    <div class="nav-tabs">
+      <ul>
+        <li>Home</li>
+        <li>Developer</li>
+        <li>Fun</li>
+      </ul>
+    </div>
+    <div class="login-button">
+      <button>Login</button>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -49,59 +71,76 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin: 0;
 }
 
-nav {
-  padding: 30px;
-}
-
-/* .logo {
-  padding: 30px;
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-top: 0.5rem;
-  float: left;
-} */
-
-.logo {
-  font-size: 2rem; /* Adjust the size of the logo */
-  color: #ff0000; /* Adjust the color of the logo */
-  /* Add any other styling properties as per your design */
-}
-
-.nav-tab {
-  padding: 30px;
-  padding-left: 2rem;
-  float: left;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav1 {
-  padding: 30px;
-  padding-left: 2rem;
-  float: left;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav2 {
-  font-weight: bold;
-  padding: 30px;
-  float: right;
-  padding: 10px 20px;
-  /* background-color: #f44336; */
-  color: #2c3e50;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-nav a {
+/* nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
 nav a.router-link-exact-active {
   color: #42b983;
+} */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: #f2f2f2; */
+}
+
+.logo {
+  padding: 30px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 0;
+  float: left;
+  color: #ff0000;
+}
+
+.nav-tabs {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-tabs span {
+  margin: 0 24px;
+}
+
+.nav-tabs a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.nav-tabs span.router-link-exact-active {
+  color: #42b983;
+}
+
+.login-button {
+  border: none;
+  cursor: pointer;
+  margin-right: 16px;
+  font-weight: bold;
+  float: right;
+  padding: 10px 20px;
+  color: #1e1e1e;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-button a {
+  text-decoration: none;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.login-button:focus {
+  outline: none;
 }
 </style>

@@ -8,7 +8,6 @@
       <div v-if="apiKey">
           <div class="key" v-for="result in apiKey" :key="result.id">
             <p v-if="apiKey"> Copy your API Key</p>
-            <!-- {{ apiKey.replace(/['"]+/g, '') }} -->
             {{ apiKey }}
           </div>
       </div>
@@ -41,7 +40,6 @@ export default {
           console.error('Could not generate api key:', error)
         })
       console.log(this.apiKey)
-      console.log(this.generatedApiKey)
     }
   }
 }

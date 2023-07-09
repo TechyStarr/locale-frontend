@@ -10,9 +10,12 @@
       <button class="get-started-btn">Sign Up to Get Started</button>
     </router-link>
     </div>
-
-      <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search">
-      <button @click="search" class="search-button">Search</button>
+      <div class="search-bar">
+        <span search-icon>
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search">
+      </div>
       <div v-if="searchResults !== ''">
         <div v-if="searchResults !== Null">
           <p v-if="searchResults.length === 0" class="error">No results found.</p>
@@ -83,6 +86,8 @@
 import LogOut from '@/components/LogOut.vue'
 import axios from 'axios'
 import PlacesOfInterest from '@/components/PlacesOfInterest.vue'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 // import SearchComponent from '@/components/SearchComponent.vue'
 // import RegisterView from './RegisterView.vue'
 
@@ -153,14 +158,14 @@ export default {
 </script>
 
 <style>
-.header-text {
+/* .header-text {
   font-size: 1.6rem;
   font-weight: 300;
-  margin-top: 12rem;
-}
+  margin-top: 1rem;
+} */
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   overflow: hidden;
 }
 
@@ -179,22 +184,35 @@ h1 {
 }
 
 .search-input {
-  padding: 15px 72px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
+  border: none;
+  background-color: transparent;
 }
 
 .search-input::placeholder {
   float: left;
 }
 
-.search-button {
-  padding: 16px 24px;
-  background-color: #f44336;
-  color: #fff;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 500px;
+  /* background-color: #632525; */
+  border-radius: 4px;
+  padding: 16px 16px;
+  border: 1px solid #ccc;
+}
+
+.search-bar input[type="text"] {
+  padding-left: 10px;
+  padding-right: 40px; /* Adjust the padding to accommodate the icon */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .search-result {
@@ -246,7 +264,7 @@ hr {
 @media (max-width: 768px) {
   .header-text {
     font-size: 1.2rem;
-    margin-top: 6rem;
+    margin-top: 2rem;
   }
 
   h1 {
@@ -259,11 +277,30 @@ hr {
   }
 
   .search-input {
-    padding: 10px 48px;
+  border: none;
+  background-color: transparent;
   }
 
-  .search-button {
-    padding: 12px 18px;
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 150px;
+    border-radius: 4px;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+  }
+
+  /* .search-bar input[type="text"] {
+    padding-left: 10px;
+    padding-right: 40px; /* Adjust the padding to accommodate the icon */
+  /* } */
+
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .search-result {
