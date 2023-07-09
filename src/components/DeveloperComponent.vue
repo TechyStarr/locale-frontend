@@ -8,7 +8,7 @@
       <div v-if="apiKey">
           <div class="key" v-for="result in apiKey" :key="result.id">
             <p v-if="apiKey"> Copy your API Key</p>
-            {{ apiKey }}
+            {{ apiKey.replace(/['"]+/g, '') }}
           </div>
       </div>
     </div>
