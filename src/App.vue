@@ -91,7 +91,7 @@ nav a.router-link-exact-active {
 }
 
 .logo {
-  padding: 30px;
+  padding-left: 30px;
   font-size: 1.5rem;
   font-weight: 500;
   margin-top: 0;
@@ -100,8 +100,7 @@ nav a.router-link-exact-active {
 }
 
 .nav-tabs {
-  padding: 0;
-  margin: 0;
+  margin: 48px 0px;
   display: flex;
   justify-content: center;
 }

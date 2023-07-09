@@ -2,8 +2,7 @@
   <div class="home">
     <div>
     <div class="header-text">
-      <h1>Locale, your best bet to knowing Nigeria well</h1>
-      <!-- <h2>Search for any location in Nigeria</h2> -->
+      <h1>Locale, your best bet to <span>knowing Nigeria well</span></h1>
     </div>
     <div>
       <router-link to="/register">
@@ -14,7 +13,7 @@
         <span search-icon>
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
         </span>
-        <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search">
+        <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search" autofocus>
       </div>
       <div v-if="searchResults !== ''">
         <div v-if="searchResults !== Null">
@@ -158,14 +157,16 @@ export default {
 </script>
 
 <style>
-/* .header-text {
-  font-size: 1.6rem;
-  font-weight: 300;
-  margin-top: 1rem;
-} */
 
-h1 {
+.header-text h1 {
   font-size: 4rem;
+  overflow: hidden;
+}
+
+.header-text span {
+  font-size: 4rem;
+  display: block;
+  margin-top: 1rem;
   overflow: hidden;
 }
 
@@ -186,6 +187,15 @@ h1 {
 .search-input {
   border: none;
   background-color: transparent;
+  outline: none;
+  appearance: none;
+  caret-color: #000000; /* Set the caret color to black */
+  cursor: text;
+}
+
+.search-input:focus {
+  border: none;
+  outline: none;
 }
 
 .search-input::placeholder {
@@ -197,7 +207,6 @@ h1 {
   justify-content: center;
   align-items: center;
   margin: 0px 500px;
-  /* background-color: #632525; */
   border-radius: 4px;
   padding: 16px 16px;
   border: 1px solid #ccc;
@@ -206,6 +215,7 @@ h1 {
 .search-bar input[type="text"] {
   padding-left: 10px;
   padding-right: 40px; /* Adjust the padding to accommodate the icon */
+
 }
 
 .search-icon {
