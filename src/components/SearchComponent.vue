@@ -18,7 +18,7 @@ export default {
   methods: {
     handleAutoComplete () {
       if (this.searchQuery.length > 2) {
-        axios.get('http://127.0.0.1:5000/query/?keyword=awka', {
+        axios.get('https://locale-lkbw.onrender.com/query/?keyword=awka', {
         params: {
           query: this.searchQuery
         }

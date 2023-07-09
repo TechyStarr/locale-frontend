@@ -108,7 +108,7 @@ export default {
   methods: {
     handleAutoComplete () {
       if (this.searchQuery.length > 2) {
-        axios.get('http://127.0.0.1:5000/query/autocomplete', {
+        axios.get('https://locale-lkbw.onrender.com/query/autocomplete', {
           params: {
             query: this.searchQuery
           }

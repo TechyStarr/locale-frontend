@@ -33,7 +33,7 @@ export default {
   methods: {
     getData () {
       axios
-        .get('http://127.0.0.1:5000/query/?keyword=umuahia')
+        .get('https://locale-lkbw.onrender.com/query/?keyword=umuahia')
         .then(response => {
           // this.responseData = response.data
           this.parsedData = response.data

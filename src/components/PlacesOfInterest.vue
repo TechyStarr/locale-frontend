@@ -65,7 +65,7 @@ export default {
   mounted () {
     // Make API call to retrieve places of interest
     // Replace 'apiEndpoint' with the actual endpoint URL
-    axios.get('http://127.0.0.1:5000/query/place')
+    axios.get('https://locale-lkbw.onrender.com/query/place')
       .then(response => {
         this.places = response.data
       })
