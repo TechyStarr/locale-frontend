@@ -27,7 +27,7 @@ export default {
 <style>
 .header-text {
   font-size: 1.6rem;
-  font-weight: 300;
+  /* font-weight: 300; */
 }
 
 h1 {

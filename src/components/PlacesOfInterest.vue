@@ -12,18 +12,22 @@
       <p>{{ place.description }}</p> -->
     <!-- </div> -->
     <div class="image-group">
-        <div>
-        <img class="img" :src="imageURL" alt="Fetched Image" />
-        <h3>National War museum</h3>
+      <div class="image">
+        <img :src="require('@/assets/Olumo-Rock.jpg')" alt="">
+        <p>Olumo Rock</p>
+        <p>At Olumo Rock, you would be treated to attractions like natural tunnels, unusual trees, natural cantilevers, gardens on the rock, broken pathways, monuments of the belief system of the rock?s primeval settlers, e.t.c</p>
       </div>
-      <div>
-        <img class="img" :src="imageURL" alt="Fetched Image" />
-        <h3>National War museum</h3>
+      <div class="image">
+        <img :src="require('@/assets/Olumo-Rock.jpg')" alt="">
+        <p>Olumo Rock</p>
+        <p>At Olumo Rock, you would be treated to attractions like natural tunnels, unusual trees, natural cantilevers, gardens on the rock, broken pathways, monuments of the belief system of the rock?s primeval settlers, e.t.c</p>
       </div>
-      <div>
-        <img class="img" :src="imageURL" alt="Fetched Image" />
-        <h3>National War museum</h3>
+      <div class="image">
+        <img :src="require('@/assets/Olumo-Rock.jpg')" alt="">
+        <p>Olumo Rock</p>
+        <p>At Olumo Rock, you would be treated to attractions like natural tunnels, unusual trees, natural cantilevers, gardens on the rock, broken pathways, monuments of the belief system of the rock?s primeval settlers, e.t.c</p>
       </div>
+
     </div>
 
     <div>
@@ -84,15 +88,25 @@ export default {
   justify-content: space-between;
 }
 
-.img {
-  /* padding-left: 10px;
-  padding-right: 10px; */
-  width: 380px; /* Set the desired width */
-  height: 380px; /* Maintain aspect ratio */
-  border-radius: 8px; /* Apply border radius if desired */
- /* Add margin-bottom for spacing */
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 380px;
+  height: 400px;
+  border-radius: 8px;
   margin-left: 30px;
   margin-right: 30px;
-  /* Add any additional styles as needed */
+  border: 1px solid #ccc;
 }
+
+.image img {
+  width: 380px;
+  height: 300px;
+  border-radius: 8px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
 </style>

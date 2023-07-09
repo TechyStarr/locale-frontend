@@ -3,7 +3,7 @@
       <div class="header-text">
         <h1>Developer content</h1>
       </div>
-      <button @click="generateApiKey" class="search-button">Generate Api Key</button>
+      <button @click="generateApiKey" class="get-started-btn">Generate Api Key</button>
       <api-key-modal :api-key="generatedApiKey" v-if="generatedApiKey" />
       <div v-if="apiKey">
           <div class="key" v-for="result in apiKey" :key="result.id">
@@ -49,11 +49,20 @@ export default {
 .header-text {
   font-size: 1.6rem;
   font-weight: 300;
-  margin-top: 12rem;
+  margin-top: 2rem;
 
 }
 .key {
   font-size: 1.6rem;
   font-weight: 300;
+}
+.get-started-btn {
+  padding: 16px 20px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 4rem;
 }
 </style>
