@@ -28,12 +28,6 @@ export default {
 .header-text {
   font-size: 1.6rem;
   font-weight: 300;
-  margin-top: 12rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* white-space: ; */
-  /* padding-bottom: 2rem; */
 }
 
 h1 {

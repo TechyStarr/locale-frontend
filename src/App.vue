@@ -13,9 +13,6 @@
       <router-link to="/developer">
           <span>Developer</span>
       </router-link>
-      <!-- <router-link to="/fun">
-        <span>Fun</span>
-    </router-link> -->
     <router-link to="/">
         <span>Contact</span>
       </router-link>
@@ -28,22 +25,6 @@
     </div>
   </nav>
   <router-view/>
-
-  <div class="header">
-    <div class="logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
-    <div class="nav-tabs">
-      <ul>
-        <li>Home</li>
-        <li>Developer</li>
-        <li>Fun</li>
-      </ul>
-    </div>
-    <div class="login-button">
-      <button>Login</button>
-    </div>
-  </div>
 
 </template>
 

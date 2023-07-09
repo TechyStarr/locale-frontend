@@ -271,15 +271,20 @@ hr {
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .header-text {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-  }
+/* RESPONSIVE STYLING */
 
-  h1 {
-    font-size: 1.8rem;
-  }
+@media (max-width: 768px) {
+  .header-text h1 {
+  font-size: 3rem;
+  overflow: hidden;
+}
+
+.header-text span {
+  font-size: 3rem;
+  display: block;
+  margin-top: 1rem;
+  overflow: hidden;
+}
 
   .get-started-btn {
     padding: 12px 16px;
