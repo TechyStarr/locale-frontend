@@ -44,7 +44,7 @@ export default {
       this.errorMessage = ''
 
       // Make API request to Register
-      axios.post('https://locale-lkbw.onrender.com/auth/signup', {
+      axios.post('http://127.0.0.1:5000/auth/signup', {
         username: this.username,
         email: this.email,
         password: this.password

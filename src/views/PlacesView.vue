@@ -2,13 +2,9 @@
   <div class="home">
     <div>
     <div class="header-text">
-      <h1>Locale, your best bet to <span>knowing Nigeria well</span></h1>
+      <h1>Find a suitable location <span> for your needs</span></h1>
     </div>
-    <div>
-      <router-link to="/register">
-      <button class="get-started-btn">Sign Up to Get Started</button>
-    </router-link>
-    </div>
+
       <div class="search-bar">
         <span search-icon>
           <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
@@ -57,6 +53,24 @@
       </div>
     </div>
       <!-- Add schools -->
+      <!-- food marts, restaurants -->
+      <search-component></search-component>
+      <div>
+        <!-- filter for regions, state and LGA -->
+        <input v-model="region" placeholder="Region">
+        <input v-model="state" placeholder="State">
+        <input v-model="lga" placeholder="LGA">
+      </div>
+
+      <!-- <-- Button to trigger the filter request -->
+      <button @click="filterLocations">Filter</button>
+
+        <!-- Display the filtered locations -->
+      <ul>
+        <li v-for="location in filteredLocations" :key="location.id">
+          {{ location.name }}
+        </li>
+      </ul>
     </div>
     <places-of-interest></places-of-interest>
     <log-out></log-out>

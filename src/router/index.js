@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 // import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
-import FunPlaces from '../views/FunPlaces.vue'
+import PlacesView from '../views/PlacesView.vue'
 import DeveloperView from '../views/DeveloperView.vue'
 
 const routes = [
@@ -36,9 +36,18 @@ const routes = [
     component: DeveloperView
   },
   {
-    path: '/fun',
-    name: 'fun',
-    component: FunPlaces
+    path: '/places',
+    name: 'places',
+    component: PlacesView
+  },
+  {
+    path: '/places/:id',
+    name: 'place'
+    // component: () => import(/* webpackChunkName: "place" */ '../views/PlaceView.vue')
+  },
+  {
+    path: '/contact',
+    name: 'contact'
   }
 ]
 

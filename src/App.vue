@@ -1,46 +1,52 @@
 <template>
   <nav class="header">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <i class="fa-sharp fa-solid fa-location-dot"></i> <span>Locale</span>
-    </div>
+    </router-link>
     <div class="nav-tabs">
-      <router-link to="/">
-        <span>Home</span>
+      <router-link to="/places">
+        <span>Places</span>
       </router-link>
-      <router-link to="/">
+      <router-link to="/about">
         <span>About</span>
       </router-link>
       <router-link to="/developer">
           <span>Developer</span>
       </router-link>
-    <router-link to="/">
+    <router-link to="/contact">
         <span>Contact</span>
       </router-link>
     </div>
 
     <div>
-      <router-link v-if="!isLoggedIn" to="/login">
-        <span class="login-button">Sign In</span>
-      </router-link>
+        <router-link v-if="!isLoggedIn" to="/login">
+          <span class="login-button">Sign In</span>
+        </router-link>
+        <!-- <li v-else to="/logout">
+          <span class="login-button">Log Out</span>
+      </li> -->
+      <log-out v-if="isLoggedIn" />
     </div>
   </nav>
   <router-view/>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 Starr. All rights reserved.</p>
+      <p>
+        Made with <i class="fa-solid fa-heart"></i> by <a href="https://twitter.com/_StarrSzn">_StarrSzn</a>
+      </p>
+    </div>
+  </footer>
 
 </template>
 
 <script>
-// import Login from './views/LoginView.vue'
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-// import { faRocket } from '@fortawesome/free-solid-svg-icons'
-
-// library.add(faRocket)
+import logOut from './views/LoginView.vue'
 
 export default {
   name: 'App',
   components: {
-    // Login
-    // FontAwesomeIcon,
+    logOut
   }
 }
 </script>
@@ -78,6 +84,7 @@ nav a.router-link-exact-active {
   margin-top: 0;
   float: left;
   color: #ff0000;
+  text-decoration: none;
 }
 
 .nav-tabs {
@@ -97,7 +104,7 @@ nav a.router-link-exact-active {
 }
 
 .nav-tabs span.router-link-exact-active {
-  color: #42b983;
+  color: #f44336;
 }
 
 .login-button {
@@ -117,10 +124,32 @@ nav a.router-link-exact-active {
 }
 
 .login-button:hover {
-  background-color: #45a049;
+  background-color: #1e1e1e;
+  color: #fff;
 }
 
 .login-button:focus {
   outline: none;
+}
+
+.footer {
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 72px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  margin:5px 0;
+}
+
+.footer a {
+  color: #42b983;
+  text-decoration: none;
 }
 </style>

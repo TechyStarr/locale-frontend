@@ -1,6 +1,9 @@
 <template>
   <div class="login-container">
     <h1>Sign into your account</h1>
+    <div v-if="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
     <form @submit.prevent="login">
       <div class="form-group">
         <label for="email">Email:</label>
@@ -14,12 +17,10 @@
         <button type="submit">Sign In</button>
       </div>
       <router-link to="/register">
-        <span class="log-alt">Don't have an account? Register Now</span>
+        <div class="log-alt">Don't have an account? <span> Register Now </span> </div>
       </router-link>
     </form>
-    <div v-if="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
+
   </div>
 </template>
 <script>
@@ -28,7 +29,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      // isLoggedIn: false,
+      isLoggedIn: false,
       email: '',
       password: '',
       errorMessage: ''
@@ -40,20 +41,25 @@ export default {
       this.errorMessage = ''
 
       // Make API request to Login
-      axios.post('https://locale-lkbw.onrender.com/auth/login', {
+      axios.post('http://127.0.0.1:5000/auth/login', {
         email: this.email,
         password: this.password
       })
         .then(response => {
         // Successful login, redirect to home page
           console.log('Logged in successfully')
-          this.$router.push('/') // Redirect to home page
+          this.isLoggedIn = response.data.isLoggedIn
+          console.log(response.data.access_token)
+          console.log('isLoggedIn:', this.isLoggedIn) // Log the status
 
           // Store the token in the localstorage
-          // localStorage.setItem('token', response.data.access_token)
+          localStorage.setItem('token', response.data.access_token)
 
           // Set the logged in status to true
-          // this.isLoggedIn = true
+          this.isLoggedIn = true
+
+          // Redirect to home page
+          this.$router.push('/')
         })
         .catch(error => {
           if (error.response.status === 401) {
@@ -67,7 +73,37 @@ export default {
           // Handle the error here
           console.log('Error: ', error.message)
         })
+    },
+    checkLoggedIn () {
+      const token = localStorage.getItem('token')
+      if (token) {
+        axios
+          .get('http://127.0.0.1:5000/auth/validate_token', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+          .then(response => {
+            this.isLoggedIn = response.data.loggedIn
+          })
+          .catch(error => {
+            console.error(error)
+          })
+      } else {
+        this.isLoggedIn = false
+      }
+    },
+    logout () {
+      // Handle the logout functionality
+      // For example, you can clear the token from localStorage and redirect the user to the login page
+      localStorage.removeItem('token') // Example: Remove the token from localStorage
+      // Redirect the user to the login page
+      this.$router.push('/login')
     }
+  },
+  mounted () {
+    this.checkLoggedIn()
+    console.log(this.isLoggedIn)
   }
 }
 </script>

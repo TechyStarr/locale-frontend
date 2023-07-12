@@ -1,7 +1,7 @@
 <template>
     <div class="login-container">
       <h1>Login</h1>
-      <form @submit.prevent="login">
+      <!-- <form @submit.prevent="login">
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" v-model="email" required>
@@ -16,50 +16,46 @@
       </form>
       <div v-if="errorMessage" class="error-message">
         {{ errorMessage }}
-      </div>
+      </div> -->
     </div>
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
-export default {
-  data () {
-    return {
-      email: '',
-      password: '',
-      errorMessage: ''
-    }
-  },
-  methods: {
-    login () {
-      // Reset error message
-      this.errorMessage = ''
+// export default {
+//   data () {
+//     return {
+//       email: '',
+//       password: '',
+//       errorMessage: ''
+//     }
+//   },
+//   methods: {
+//     login () {
+//       // Reset error message
+//       this.errorMessage = ''
 
-      // Make API request to login
-      axios.post('https://locale-lkbw.onrender.com/auth/login', {
-        email: this.email,
-        password: this.password
-      })
-        .then(response => {
-        // Successful login, redirect to home page
-          console.log('Login successful')
-          this.$router.push('/') // Redirect to home page
-        })
-        // .catch(error => {
-        //   // Invalid credentials, set error message
-        //   this.errorMessage = 'Invalid email or password.'
-        // })
-        .catch(error => {
-          // Handle the error here
-          console.log('Error: ', error)
-        })
-    }
-  }
-}
+//       // Make API request to login
+//       axios.post('https://locale-lkbw.onrender.com/auth/login', {
+//         email: this.email,
+//         password: this.password
+//       })
+//         .then(response => {
+//         // Successful login, redirect to home page
+//           console.log('Login successful')
+//           this.$router.push('/') // Redirect to home page
+//         })
+//         .catch(error => {
+//           // Handle the error here
+//           console.log('Error: ', error)
+//         })
+//     }
+//   }
+// }
 </script>
 
 <style scoped>
-  .login-container {
+  /* .login-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -97,5 +93,5 @@ export default {
   .error-message {
     color: red;
     margin-top: 10px;
-  }
+  } */
 </style>

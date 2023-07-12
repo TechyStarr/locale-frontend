@@ -29,6 +29,19 @@ export default {
               Authorization: `Bearer ${token}`
             }
           })
+          .then(response => {
+            // Check the API response to determine if the user is logged in
+            if (response.data.loggedIn) {
+              this.loggedIn = true // User is logged in
+            } else {
+              this.loggedIn = false // User is not logged in
+            }
+          })
+          .catch(error => {
+            // Handle any errors that occur during the API request
+            console.error(error)
+            this.loggedIn = false // Set loggedIn to false if an error occurs
+          })
       } else {
         this.loggedIn = false
       }

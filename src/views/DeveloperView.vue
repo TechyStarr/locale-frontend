@@ -13,12 +13,10 @@ export default {
   name: 'DeveloperView',
   components: {
     DeveloperComponent
-    // ApiKeyModal
   },
   data () {
     return {
       apiKey: ''
-      // generatedApiKey: null
     }
   }
 }
