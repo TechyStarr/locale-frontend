@@ -17,7 +17,9 @@
         <button type="submit">Sign In</button>
       </div>
       <router-link to="/register">
-        <div class="log-alt">Don't have an account? <span> Register Now </span> </div>
+        <div class="log-alt">Don't have an account?
+          <span> Register Now </span>
+        </div>
       </router-link>
     </form>
 
@@ -41,7 +43,7 @@ export default {
       this.errorMessage = ''
 
       // Make API request to Login
-      axios.post('http://127.0.0.1:5000/auth/login', {
+      axios.post('https://locale-lkbw.onrender.com/auth/login', {
         email: this.email,
         password: this.password
       })
@@ -78,7 +80,7 @@ export default {
       const token = localStorage.getItem('token')
       if (token) {
         axios
-          .get('http://127.0.0.1:5000/auth/validate_token', {
+          .get('https://locale-lkbw.onrender.com/auth/validate_token', {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -92,14 +94,14 @@ export default {
       } else {
         this.isLoggedIn = false
       }
-    },
-    logout () {
-      // Handle the logout functionality
-      // For example, you can clear the token from localStorage and redirect the user to the login page
-      localStorage.removeItem('token') // Example: Remove the token from localStorage
-      // Redirect the user to the login page
-      this.$router.push('/login')
     }
+    // logout () {
+    //   // Handle the logout functionality
+    //   // For example, you can clear the token from localStorage and redirect the user to the login page
+    //   localStorage.removeItem('token') // Example: Remove the token from localStorage
+    //   // Redirect the user to the login page
+    //   this.$router.push('/login')
+    // }
   },
   mounted () {
     this.checkLoggedIn()
@@ -110,11 +112,14 @@ export default {
 
 <style scoped>
 .login-container {
-  max-width: 400px;
-  margin: 0 auto;
+  /* max-width: 400px; */
+  /* margin: 0 auto; */
+  margin-left: 400px;
+  margin-right: 400px;
   padding: 20px;
   border-radius: 4px;
   display: block;
+  /* border: 1px solid #ccc; */
 }
 h1 {
   display: flex;
@@ -168,6 +173,79 @@ button {
 .error-message {
   color: red;
   margin-top: 10px;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+
+  .login-container {
+  /* max-width: 400px; */
+  /* margin: 0 auto; */
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 20px;
+  border-radius: 4px;
+  display: block;
+  /* border: 1px solid #ccc; */
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 10px;
+}
+.form-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 24rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 25.4rem;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.log-alt {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  text-decoration: none;
+}
+
+.log-alt span {
+  color: #f44336;
+  font-weight: bold;
+  text-decoration: none;
+  list-style: none;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
 }
 
 </style>

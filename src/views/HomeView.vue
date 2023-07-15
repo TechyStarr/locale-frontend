@@ -9,64 +9,14 @@
       <button class="get-started-btn">Sign Up to Get Started</button>
     </router-link>
     </div>
-      <div class="search-bar">
-        <span search-icon>
-          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-        </span>
-        <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search" autofocus>
-      </div>
-      <div v-if="searchResults !== ''">
-        <div v-if="searchResults !== Null">
-          <p v-if="searchResults.length === 0" class="error">No results found.</p>
-          <p v-else-if="searchResults === 'error'">An error occurred during the search. Please try again later.</p>
-          <div v-else>
-            <div class="search-result" v-for="result in searchResults" :key="result.id">
-              <p>You searched for {{ result.name }}</p>
-              <div class="search-item">
-                <p>State</p>
-                <p>{{ result.name }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Region</p>
-                <p> {{ result.region }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Capital</p>
-                <p> {{ result.capital }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Number of LGA</p>
-                <p> {{ result.lgas }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Slogan</p>
-                <p> {{ result.slogan }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Population</p>
-                <p> {{ result.population }} </p>
-              </div>
-
-            </div>
-          </div>
-      </div>
-    </div>
-      <!-- Add schools -->
-    </div>
-    <places-of-interest></places-of-interest>
-    <log-out></log-out>
+  </div>
   </div>
 </template>
 
 <script>
-import LogOut from '@/components/LogOut.vue'
+// import LogOut from '@/components/LogOut.vue'
 import axios from 'axios'
-import PlacesOfInterest from '@/components/PlacesOfInterest.vue'
+// import PlacesOfInterest from '@/components/PlacesOfInterest.vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 // import SearchComponent from '@/components/SearchComponent.vue'
@@ -75,8 +25,8 @@ import '@fortawesome/fontawesome-free/css/all.css'
 export default {
   name: 'HomeView',
   components: {
-    LogOut,
-    PlacesOfInterest
+    // LogOut,
+    // PlacesOfInterest
     // SearchComponent
     // RegisterView
   },

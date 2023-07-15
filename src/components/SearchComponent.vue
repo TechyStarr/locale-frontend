@@ -18,7 +18,7 @@ export default {
   methods: {
     handleAutoComplete () {
       if (this.searchQuery.length > 2) {
-        axios.get('https://locale-lkbw.onrender.com/query/?keyword=awka', {
+        axios.get('https://locale-lkbw.onrender.com/query/?keyword=' + this.searchQuery,{
         params: {
           query: this.searchQuery
         }
@@ -27,7 +27,7 @@ export default {
     },
     // Perform the search request using the API service
     performSearch () {
-      axios.get('http://127.0.0.1:5000/query/?keyword=' + this.searchQuery, {
+      axios.get('https://locale-lkbw.onrender.com/query/?keyword=' + this.searchQuery, {
         params: {
           query: this.searchQuery
         }

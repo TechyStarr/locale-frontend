@@ -78,21 +78,17 @@
 </template>
 
 <script>
-import LogOut from '@/components/LogOut.vue'
 import axios from 'axios'
 import PlacesOfInterest from '@/components/PlacesOfInterest.vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 // import SearchComponent from '@/components/SearchComponent.vue'
-// import RegisterView from './RegisterView.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    LogOut,
     PlacesOfInterest
     // SearchComponent
-    // RegisterView
   },
   data () {
     return {
@@ -133,7 +129,7 @@ export default {
       console.log(typeof this.searchResults)
     },
     filterLocations () {
-      const url = 'http://127.0.0.1:5000/query/?keyword=' + this.searchQuery
+      const url = 'https://locale-lkbw.onrender.com/query/filter' + this.searchQuery
       const params = {
         region: this.region,
         state: this.state,

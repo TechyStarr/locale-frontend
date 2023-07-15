@@ -39,7 +39,7 @@ export default {
   methods: {
     generateApiKey () {
       // Make API call to generate API key
-      axios.post('http://127.0.0.1:5000/auth/generate-api-key')
+      axios.post('https://locale-lkbw.onrender.com/auth/generate-api-key')
         .then(response => {
           this.apiKey = response.data
         })
@@ -66,7 +66,7 @@ export default {
         })
     },
     viewApiKeys () {
-      axios.get('http://127.0.0.1:5000/auth/apikeys')
+      axios.get('https://locale-lkbw.onrender.com/auth/apikeys')
         .then(response => {
           this.apiKeys = response.data
         })

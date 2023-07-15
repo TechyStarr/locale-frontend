@@ -22,10 +22,9 @@
         <router-link v-if="!isLoggedIn" to="/login">
           <span class="login-button">Sign In</span>
         </router-link>
-        <!-- <li v-else to="/logout">
-          <span class="login-button">Log Out</span>
-      </li> -->
-      <log-out v-if="isLoggedIn" />
+        <router-link v-else to="/login">
+          <span class="login-button" @click="logout">Log Out</span>
+        </router-link>
     </div>
   </nav>
   <router-view/>
@@ -41,12 +40,42 @@
 </template>
 
 <script>
-import logOut from './views/LoginView.vue'
+// import login from './views/LoginView.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    logOut
+  },
+  data () {
+    return {
+      isLoggedIn: false
+    }
+  },
+  mounted () {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.isLoggedIn = true
+    }
+  },
+  methods: {
+    logout () {
+      axios.post('http://127.0.0.1:5000/auth/logout')
+        .then(response => {
+          console.log('Logged out successfully')
+          this.isLoggedIn = response.data.isLoggedIn
+          console.log('isLoggedIn:', this.isLoggedIn) // Log the status
+        })
+        .catch(error => {
+          console.log('Logout failed')
+          console.log(error)
+        })
+
+      localStorage.removeItem('token') // Remove the token from localStorage
+      this.isLoggedIn = false
+      // Redirect the user to the login page
+      this.$router.push('/login')
+    }
   }
 }
 </script>
