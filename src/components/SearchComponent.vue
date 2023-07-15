@@ -25,7 +25,7 @@ export default {
       })
       }
     },
-    // Perform the search request using the API service
+
     performSearch () {
       axios.get('https://locale-lkbw.onrender.com/query/?keyword=' + this.searchQuery, {
         params: {
@@ -36,10 +36,8 @@ export default {
           // Handle the response data
           const searchResults = response.data
           console.log(searchResults)
-          // Do something with the search results
         })
         .catch(error => {
-          // Handle any errors
           console.error(error)
         })
     }

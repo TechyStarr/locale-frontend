@@ -298,11 +298,6 @@ hr {
     border: 1px solid #ccc;
   }
 
-  /* .search-bar input[type="text"] {
-    padding-left: 10px;
-    padding-right: 40px; /* Adjust the padding to accommodate the icon */
-  /* } */
-
   .search-icon {
     position: absolute;
     right: 10px;

@@ -51,7 +51,6 @@ export default {
     copyApiKey () {
       // Copy API key to clipboard
       navigator.clipboard.writeText(this.apiKey.key)
-      // this.generatedApiKey = this.apiKey.key
         .then(() => {
           this.copyStatus = 'Copied to clipboard'
           console.log(this.copyStatus)
