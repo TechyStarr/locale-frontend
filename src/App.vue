@@ -19,12 +19,13 @@
     </div>
 
     <div>
-        <router-link v-if="!isLoggedIn" to="/login">
-          <span class="login-button">Sign In</span>
+        <router-link v-if="isLoggedIn"  to="/login">
+          <span class="login-button" @click="login">Sign In</span>
         </router-link>
         <router-link v-else to="/login">
-          <span class="login-button" @click="logout">Log Out</span>
+          <span class="login-button">Log Out</span>
         </router-link>
+
     </div>
   </nav>
   <router-view/>
@@ -49,7 +50,7 @@ export default {
   },
   data () {
     return {
-      isLoggedIn: false
+      isLoggedIn: true
     }
   },
   mounted () {
@@ -60,7 +61,7 @@ export default {
   },
   methods: {
     logout () {
-      axios.post('http://127.0.0.1:5000/auth/logout')
+      axios.post('https://locale-lkbw.onrender.com/auth/logout')
         .then(response => {
           console.log('Logged out successfully')
           this.isLoggedIn = response.data.isLoggedIn

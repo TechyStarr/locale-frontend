@@ -94,14 +94,14 @@ export default {
       } else {
         this.isLoggedIn = false
       }
+    },
+    logout () {
+      // Handle the logout functionality
+      // For example, you can clear the token from localStorage and redirect the user to the login page
+      localStorage.removeItem('token') // Example: Remove the token from localStorage
+      // Redirect the user to the login page
+      this.$router.push('/login')
     }
-    // logout () {
-    //   // Handle the logout functionality
-    //   // For example, you can clear the token from localStorage and redirect the user to the login page
-    //   localStorage.removeItem('token') // Example: Remove the token from localStorage
-    //   // Redirect the user to the login page
-    //   this.$router.push('/login')
-    // }
   },
   mounted () {
     this.checkLoggedIn()
