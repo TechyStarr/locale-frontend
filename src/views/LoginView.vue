@@ -16,11 +16,9 @@
       <div class="form-group">
         <button type="submit">Sign In</button>
       </div>
-      <router-link to="/register">
-        <div class="log-alt">Don't have an account?
-          <span> Register Now </span>
-        </div>
-      </router-link>
+      <router-link class="log-alt" to="/login">
+          Don't have an account? <span> Sign In</span>
+        </router-link>
     </form>
 
   </div>
@@ -163,11 +161,16 @@ button {
 .log-alt {
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  margin-bottom: 20px;
+  color: #1e1e1e;
+  text-decoration: none;
+}
+
+.log-alt span {
+  display: flex;
+  justify-content: center;
+  padding-left: 4px;
   color: #f44336;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .error-message {

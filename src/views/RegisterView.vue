@@ -17,8 +17,8 @@
         <div class="form-group">
           <button type="submit">Register</button>
         </div>
-        <router-link to="/login">
-          <span class="log-alt">Already have an account? Sign In</span>
+        <router-link class="log-alt" to="/login">
+          Already have an account? <span> Sign In</span>
         </router-link>
       </form>
       <div v-if="errorMessage" class="error-message">
@@ -107,11 +107,16 @@ input[type="password"] {
 .log-alt {
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  margin-bottom: 20px;
+  color: #1e1e1e;
+  text-decoration: none;
+}
+
+.log-alt span {
+  display: flex;
+  justify-content: center;
+  padding-left: 4px;
   color: #f44336;
   font-weight: bold;
-  text-decoration: none;
 }
 
 button {
