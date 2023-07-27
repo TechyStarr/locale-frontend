@@ -17,7 +17,7 @@
         <button type="submit">Sign In</button>
       </div>
       <router-link class="log-alt" to="/login">
-          Don't have an account? <span> Sign In</span>
+          Don't have an account yet? <span> Register here</span>
         </router-link>
     </form>
 
