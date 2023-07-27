@@ -1,42 +1,52 @@
 <template>
-  <nav class="header">
-    <router-link to="/" class="logo">
-      <i class="fa-sharp fa-solid fa-location-dot"></i> <span>Locale</span>
-    </router-link>
-    <div class="nav-tabs">
-      <router-link to="/places">
-        <span>Places</span>
+  <nav class="header" >
+
+    <div class="logo-toggle-container">
+      <router-link to="/" class="logo">
+        <i class="fa-sharp fa-solid fa-location-dot"></i> <span>Locale</span>
       </router-link>
-      <router-link to="/about">
-        <span>About</span>
-      </router-link>
-      <router-link to="/developer">
+
+      <div class="menu-toggle" @click="toggleMenu">
+        <i v-if="!isMenuVisible" class="fa-solid fa-bars"></i>
+        <i v-else class="fa-solid fa-times"></i>
+      </div>
+    </div>
+
+    <div class="nav-tabs" :class="{ 'show-menu' :isMenuVisible }">
+        <a @click="navigateTo('/places')">
+          <span>Places</span>
+        </a>
+        <a @click="navigateTo('/about')">
+          <span>About</span>
+        </a>
+        <a @click="navigateTo('/developer')">
           <span>Developer</span>
-      </router-link>
-    <router-link to="/contact">
-        <span>Contact</span>
-      </router-link>
+        </a>
+        <a @click="navigateTo('/contact')">
+          <span>Contact</span>
+        </a>
+      <div>
+          <router-link v-if="isLoggedIn"  to="/login">
+            <span class="login-button" @click="login">Sign In</span>
+          </router-link>
+          <router-link v-else to="/login">
+            <span class="login-button">Log Out</span>
+          </router-link>
+      </div>
     </div>
 
-    <div>
-        <router-link v-if="isLoggedIn"  to="/login">
-          <span class="login-button" @click="login">Sign In</span>
-        </router-link>
-        <router-link v-else to="/login">
-          <span class="login-button">Log Out</span>
-        </router-link>
-
-    </div>
   </nav>
-  <router-view/>
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2023 Starr. All rights reserved.</p>
-      <p>
-        Made with <i class="fa-solid fa-heart"></i> by <a href="https://twitter.com/_StarrSzn">_StarrSzn</a>
-      </p>
-    </div>
-  </footer>
+  <div :class="{ 'hide-content': isMenuVisible }">
+    <router-view/>
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2023 Starr. All rights reserved.</p>
+        <p>
+          Made with <i class="fa-solid fa-heart"></i> by <a href="https://twitter.com/_StarrSzn">_StarrSzn</a>
+        </p>
+      </div>
+    </footer>
+  </div>
 
 </template>
 
@@ -50,7 +60,8 @@ export default {
   },
   data () {
     return {
-      isLoggedIn: true
+      isLoggedIn: true,
+      isMenuVisible: false
     }
   },
   mounted () {
@@ -60,6 +71,13 @@ export default {
     }
   },
   methods: {
+    toggleMenu () {
+      this.isMenuVisible = !this.isMenuVisible
+    },
+    navigateTo (path) {
+      this.toggleMenu()
+      this.$router.push(path)
+    },
     logout () {
       axios.post('https://locale-lkbw.onrender.com/auth/logout')
         .then(response => {
@@ -95,17 +113,30 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #f2f2f2; */
+  flex-wrap: wrap;
+}
+
+.logo-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
   padding-left: 30px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
   margin-top: 0;
-  float: left;
   color: #ff0000;
   text-decoration: none;
+}
+
+.menu-toggle {
+  font-size: 1.5rem;
+  color: #ff0000;
+  cursor: pointer;
+  /* margin-left: 500px; */
+
 }
 
 .nav-tabs {
@@ -114,14 +145,12 @@ export default {
   justify-content: center;
 }
 
-.nav-tabs span {
-  margin: 0 24px;
-}
-
 .nav-tabs a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
+  cursor: pointer;
+  margin: 0 24px;
 }
 
 .nav-tabs span.router-link-exact-active {
@@ -172,5 +201,66 @@ export default {
 .footer a {
   color: #42b983;
   text-decoration: none;
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    /* display: none; */
+    font-size: 1.5rem;
+    color: #ff0000;
+    cursor: pointer;
+    margin-right: 48px;
+  }
+
+  .menu-toggle i {
+    transition: transform 0.3s ease;
+  }
+
+  /* Rotation for the 'X' button when menu is active */
+  .menu-toggle .fa-times {
+    transform: rotate(45deg);
+  }
+
+  .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 35px;
+}
+
+  .nav-tabs {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .logo-toggle-container {}
+
+/* Styling for the button when it's clicked */
+  .menu-btn.active {
+    color: #f44336;
+  }
+
+  .show-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .show-menu a {
+    margin: 24px 0;
+    cursor: pointer;
+  }
+
+  .hide-content {
+    display: none;
+  }
+
 }
 </style>
