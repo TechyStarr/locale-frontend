@@ -17,9 +17,9 @@
         <div class="form-group">
           <button type="submit">Register</button>
         </div>
-        <router-link class="log-alt" to="/login">
+        <a class="log-alt" @click="navigateTo('/login')">
           Already have an account? <span> Sign In</span>
-        </router-link>
+        </a>
       </form>
       <div v-if="errorMessage" class="error-message">
         {{ errorMessage }}
@@ -39,6 +39,13 @@ export default {
     }
   },
   methods: {
+    toggleMenu () {
+      this.isMenuVisible = !this.isMenuVisible
+    },
+    navigateTo (path) {
+      this.toggleMenu()
+      this.$router.push(path)
+    },
     register () {
       // Reset error message
       this.errorMessage = ''

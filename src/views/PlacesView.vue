@@ -12,68 +12,48 @@
         <input type="text" v-model="searchQuery" placeholder="Search for locations in nigeria" class="search-input" @keyup.enter="search" autofocus>
       </div>
       <div v-if="searchResults !== ''">
-        <div v-if="searchResults !== Null">
-          <p v-if="searchResults.length === 0" class="error">No results found.</p>
-          <p v-else-if="searchResults === 'error'">An error occurred during the search. Please try again later.</p>
-          <div v-else>
-            <div class="search-result" v-for="result in searchResults" :key="result.id">
-              <p>You searched for {{ result.name }}</p>
-              <div class="search-item">
-                <p>State</p>
-                <p>{{ result.name }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Region</p>
-                <p> {{ result.region }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Capital</p>
-                <p> {{ result.capital }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Number of LGA</p>
-                <p> {{ result.lgas }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Slogan</p>
-                <p> {{ result.slogan }} </p>
-              </div>
-              <hr>
-              <div class="search-item">
-                <p>Population</p>
-                <p> {{ result.population }} </p>
-              </div>
-
-            </div>
+      <p v-if="searchResults.length === 0" class="error">No results found.</p>
+      <p v-else-if="searchResults === 'error'">An error occurred during the search. Please try again later.</p>
+      <div v-else>
+        <div class="search-result" v-for="result in searchResults" :key="result.id">
+          <p>You searched for {{ result.name }}</p>
+          <div class="search-item">
+            <p>State</p>
+            <p>{{ result.name }} </p>
           </div>
+          <hr>
+          <div class="search-item">
+            <p>Region</p>
+            <p> {{ result.region }} </p>
+          </div>
+          <hr>
+          <div class="search-item">
+            <p>Capital</p>
+            <p> {{ result.capital }} </p>
+          </div>
+          <hr>
+          <div class="search-item">
+            <p>Number of LGA</p>
+            <p> {{ result.lgas }} </p>
+          </div>
+          <hr>
+          <div class="search-item">
+            <p>Slogan</p>
+            <p> {{ result.slogan }} </p>
+          </div>
+          <hr>
+          <div class="search-item">
+            <p>Population</p>
+            <p> {{ result.population }} </p>
+          </div>
+
+        </div>
       </div>
     </div>
       <!-- Add schools -->
       <!-- food marts, restaurants -->
-      <search-component></search-component>
-      <div>
-        <!-- filter for regions, state and LGA -->
-        <input v-model="region" placeholder="Region">
-        <input v-model="state" placeholder="State">
-        <input v-model="lga" placeholder="LGA">
-      </div>
-
-      <!-- <-- Button to trigger the filter request -->
-      <button @click="filterLocations">Filter</button>
-
-        <!-- Display the filtered locations -->
-      <ul>
-        <li v-for="location in filteredLocations" :key="location.id">
-          {{ location.name }}
-        </li>
-      </ul>
     </div>
     <places-of-interest></places-of-interest>
-    <log-out></log-out>
   </div>
 </template>
 
@@ -82,13 +62,10 @@ import axios from 'axios'
 import PlacesOfInterest from '@/components/PlacesOfInterest.vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-// import SearchComponent from '@/components/SearchComponent.vue'
-
 export default {
   name: 'HomeView',
   components: {
     PlacesOfInterest
-    // SearchComponent
   },
   data () {
     return {
@@ -96,21 +73,11 @@ export default {
       searchResults: [],
       region: '',
       state: '',
-      lga: '',
-      filteredLocations: []
+      lga: ''
       // imageURL: 'https://images.unsplash.com/photo-1560792523-9b3e98060a4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60'
     }
   },
   methods: {
-    handleAutoComplete () {
-      if (this.searchQuery.length > 2) {
-        axios.get('https://locale-lkbw.onrender.com/query/autocomplete', {
-          params: {
-            query: this.searchQuery
-          }
-        })
-      }
-    },
     search () {
       axios.get('https://locale-lkbw.onrender.com/query?keyword=' + this.searchQuery)
         .then(response => {
@@ -127,22 +94,22 @@ export default {
           console.log(error)
         })
       console.log(typeof this.searchResults)
-    },
-    filterLocations () {
-      const url = 'https://locale-lkbw.onrender.com/query/filter' + this.searchQuery
-      const params = {
-        region: this.region,
-        state: this.state,
-        lga: this.lga
-      }
-      axios.get(url, { params })
-        .then(response => {
-          this.filteredLocations = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
     }
+    // filterLocations () {
+    //   const url = 'https://locale-lkbw.onrender.com/query/filter' + this.searchQuery
+    //   const params = {
+    //     region: this.region,
+    //     state: this.state,
+    //     lga: this.lga
+    //   }
+    //   axios.get(url, { params })
+    //     .then(response => {
+    //       this.filteredLocations = response.data
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    // }
   }
 }
 

@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   data () {
@@ -85,18 +85,18 @@ export default {
       imageURL: 'https://images.unsplash.com/photo-1560792523-9b3e98060a4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60'
 
     }
-  },
-  mounted () {
-    // Make API call to retrieve places of interest
-    // Replace 'apiEndpoint' with the actual endpoint URL
-    axios.get('https://locale-lkbw.onrender.com/query/place')
-      .then(response => {
-        this.places = response.data
-      })
-      .catch(error => {
-        console.error('Error retrieving places of interest:', error)
-      })
   }
+  // mounted () {
+  //   // Make API call to retrieve places of interest
+  //   // Replace 'apiEndpoint' with the actual endpoint URL
+  //   axios.get('https://locale-lkbw.onrender.com/query/place')
+  //     .then(response => {
+  //       this.places = response.data
+  //     })
+  //     .catch(error => {
+  //       console.error('Error retrieving places of interest:', error)
+  //     })
+  // }
 
 }
 </script>

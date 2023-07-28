@@ -1,7 +1,7 @@
 <template>
   <nav class="header" >
 
-    <div class="logo-toggle-container">
+    <!-- <div class="logo-toggle-container"> -->
       <router-link to="/" class="logo">
         <i class="fa-sharp fa-solid fa-location-dot"></i> <span>Locale</span>
       </router-link>
@@ -10,29 +10,28 @@
         <i v-if="!isMenuVisible" class="fa-solid fa-bars"></i>
         <i v-else class="fa-solid fa-times"></i>
       </div>
-    </div>
+    <!-- </div> -->
 
     <div class="nav-tabs" :class="{ 'show-menu' :isMenuVisible }">
-        <a @click="navigateTo('/places')">
-          <span>Places</span>
-        </a>
-        <a @click="navigateTo('/about')">
-          <span>About</span>
-        </a>
-        <a @click="navigateTo('/developer')">
-          <span>Developer</span>
-        </a>
-        <a @click="navigateTo('/contact')">
-          <span>Contact</span>
-        </a>
-      <div>
-          <router-link v-if="isLoggedIn"  to="/login">
-            <span class="login-button" @click="login">Sign In</span>
-          </router-link>
-          <router-link v-else to="/login">
-            <span class="login-button">Log Out</span>
-          </router-link>
-      </div>
+      <a @click="navigateTo('/places')">
+        <span>Places</span>
+      </a>
+      <a @click="navigateTo('/about')">
+        <span>About</span>
+      </a>
+      <a @click="navigateTo('/developer')">
+        <span>Developer</span>
+      </a>
+      <a @click="navigateTo('/contact')">
+        <span>Contact</span>
+      </a>
+      <a @click="navigateTo('/login')">
+        <span class="login-button">Sign In</span>
+      </a>
+      <a @click="navigateTo('/register')">
+        <span class="login-button">Register</span>
+      </a>
+
     </div>
 
   </nav>
@@ -219,6 +218,14 @@ export default {
     margin-right: 48px;
   }
 
+  .menu-toggle .menu-btn {
+    /* display: none; */
+    font-size: 1.5rem;
+    color: #ff0000;
+    cursor: pointer;
+    margin-right: 48px;
+  }
+
   .menu-toggle i {
     transition: transform 0.3s ease;
   }
@@ -239,8 +246,6 @@ export default {
     display: none;
     margin-top: 20px;
   }
-
-  .logo-toggle-container {}
 
 /* Styling for the button when it's clicked */
   .menu-btn.active {

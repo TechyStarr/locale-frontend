@@ -16,9 +16,9 @@
       <div class="form-group">
         <button type="submit">Sign In</button>
       </div>
-      <router-link class="log-alt" to="/login">
+      <a class="log-alt" @click="navigateTo('/register')">
           Don't have an account yet? <span> Register here</span>
-        </router-link>
+      </a>
     </form>
 
   </div>
@@ -36,6 +36,13 @@ export default {
     }
   },
   methods: {
+    toggleMenu () {
+      this.isMenuVisible = !this.isMenuVisible
+    },
+    navigateTo (path) {
+      this.toggleMenu()
+      this.$router.push(path)
+    },
     login () {
       // Reset error message
       this.errorMessage = ''
@@ -109,15 +116,13 @@ export default {
 </script>
 
 <style scoped>
-.login-container {
-  /* max-width: 400px; */
-  /* margin: 0 auto; */
-  margin-left: 400px;
-  margin-right: 400px;
+@media screen and (min-width: 768px) {
+  .login-container {
+  max-width: 400px;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 4px;
   display: block;
-  /* border: 1px solid #ccc; */
 }
 h1 {
   display: flex;
@@ -139,23 +144,12 @@ label {
   align-self: flex-start;
 }
 
-input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 30rem;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-button {
-  width: 31.4rem;
-  padding: 10px 20px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .log-alt {
@@ -173,17 +167,26 @@ button {
   font-weight: bold;
 }
 
+button {
+  width: 31.4rem;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .error-message {
   color: red;
   margin-top: 10px;
+}
 }
 
 /* Mobile View */
 @media screen and (max-width: 768px) {
 
   .login-container {
-  /* max-width: 400px; */
-  /* margin: 0 auto; */
   margin-left: 150px;
   margin-right: 150px;
   padding: 20px;
@@ -230,18 +233,12 @@ button {
   cursor: pointer;
 }
 
-.log-alt {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-  text-decoration: none;
-}
-
 .log-alt span {
   color: #f44336;
   font-weight: bold;
   text-decoration: none;
   list-style: none;
+  cursor: pointer;
 }
 
 .error-message {
